@@ -1,0 +1,13 @@
+#{extends 'main.html' /}
+#{set title:'Blog Posts' /}
+
+#{list items:posts, as:'post'}
+<span class="post-title">
+    <a href="@{ Posts.show(post.id) }">${post.title}</a>
+</span>
+<span class="post-metadata">written ${post.postedAt.since()}</span>
+
+<div class="post-content">
+    ${post.content.nl2br()}
+</div>	
+#{/list}
