@@ -10,4 +10,10 @@
 <div class="post-content">
     ${post.content.nl2br()}
 </div>	
+
+#{form @delete(post.id)}
+	<input type="submit" id="delete" value="Delete Post" />
+#{/form}
+</br>
+
 #{/list}

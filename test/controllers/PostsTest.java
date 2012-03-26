@@ -49,5 +49,15 @@ public class PostsTest extends FunctionalTest {
         assertContentType("text/html", response);
         assertCharset(play.Play.defaultWebEncoding, response);
     }
+	
+	@Test
+	public void shouldBeAbleToDeleteAPost(){
+		long existingPostId = posts.get(0).id;
+		
+		Response response = DELETE("/posts/" + existingPostId);
+		
+		assertStatus(302, response);
+		assertHeaderEquals("Location", "/", response);
+	}
 
 }

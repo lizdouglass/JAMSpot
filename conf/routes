@@ -1,6 +1,7 @@
 GET		/							Posts.index
 GET		/posts						Posts.index
 GET		/posts/{id}					Posts.show
+DELETE	/posts/{id}					Posts.delete
 
 
 # Ignore favicon requests

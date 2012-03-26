@@ -1,0 +1,35 @@
+#{fixture delete:'all', load:'data.yml' /}
+
+#{selenium 'View all posts'}
+
+	// Given the user is on the posts page
+	open('/')
+	clearSession()
+	
+	// Then there should be two posts showing
+	assertText('logo', 'JAMSpot.')
+	assertTextPresent('About the model layer') 
+	assertTextPresent('The MVC application')
+#{/selenium}
+
+#{selenium 'Delete a post'}
+
+	// Given the user is on the posts page
+	open('/posts')
+	clearSession()
+	assertTextPresent('About the model layer') 
+	assertTextPresent('The MVC application')
+	
+	// When they delete a post 
+	clickAndWait('delete')
+	
+	// Then they should stay to the posts page
+	assertText('logo', 'JAMSpot.')
+	assertTextPresent('The MVC application') 
+	
+	// And the deleted post should no longer be present
+	assertTextNotPresent('About the model layer')
+	
+#{/selenium}
+
+
